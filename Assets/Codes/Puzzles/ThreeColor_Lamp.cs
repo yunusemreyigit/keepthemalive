@@ -9,10 +9,7 @@ public class ThreeColor_Lamp : MonoBehaviour
     public void Start()
     {
         imageRenderer = GetComponent<Image>();
-        if (sprites.Length > 0)
-            imageRenderer.sprite = sprites[0];
-        else
-            Debug.LogError("Sprites is empty!");
+        imageRenderer.sprite = sprites[0];
     }
     public void ChangeColor()
     {
