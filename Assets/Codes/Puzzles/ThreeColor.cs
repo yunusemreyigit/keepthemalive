@@ -38,7 +38,7 @@ public class ThreeColor : MonoBehaviour
     {
         int loopCount = Random.Range(2, 7);
         while (loopCount-- >= 0)
-            OnButtonClick(Random.Range(0, Lamps.Length-1));
+            OnButtonClick(Random.Range(0, Buttons.Length));
     }
     public bool IsGameOver()
     {
