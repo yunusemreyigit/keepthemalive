@@ -1,7 +1,6 @@
 using UnityEngine;
-public class CollectGarbage_Bin : MonoBehaviour
+public class CollectGarbage_Bin : Puzzle
 {
-    public GameObject CollectGarbageUIPanel;
     public CollectGarbage_Garbage[] Garbages;
     public Vector2 minBounds;
     public Vector2 maxBounds;
@@ -23,13 +22,5 @@ public class CollectGarbage_Bin : MonoBehaviour
         foreach(CollectGarbage_Garbage garbage in Garbages)
             if (garbage.isActiveAndEnabled) return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        CollectGarbageUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        CollectGarbageUIPanel.SetActive(false);
     }
 }

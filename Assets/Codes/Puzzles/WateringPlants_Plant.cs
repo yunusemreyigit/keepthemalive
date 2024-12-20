@@ -20,7 +20,7 @@ public class WateringPlants_Plant : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Pot"))
-            HP += Time.deltaTime * 2;
+            HP += Time.deltaTime * 3;
     }
     public bool NeedWater()
     {

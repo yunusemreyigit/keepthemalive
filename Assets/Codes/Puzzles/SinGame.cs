@@ -1,7 +1,6 @@
 using UnityEngine;
-public class SinGame : MonoBehaviour
+public class SinGame : Puzzle
 {
-    public GameObject SinGameUIPanel;
     public Sin_Graph AnswerGraph;
     public Sin_Graph Graph;
     public RotatingButton[] buttons;
@@ -18,14 +17,6 @@ public class SinGame : MonoBehaviour
         } else timer = 0;
             
         Graph.amplitude = buttons[0].value * 3f - 1.5f;
-        Graph.frequency = buttons[1].value * 10f;
-    }
-    public void OpenPanel()
-    {
-        SinGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        SinGameUIPanel.SetActive(false);
+        Graph.frequency = buttons[1].value * 9f + 1f;
     }
 }

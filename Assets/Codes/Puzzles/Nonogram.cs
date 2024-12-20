@@ -1,11 +1,10 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class Nonogram : MonoBehaviour
+public class Nonogram : Puzzle
 {
     const int RowSize = 3;
     const int ColumnSize = 4;
-    public GameObject ThreeColorUIPanel;
     public Button[] Buttons = new Button[RowSize * ColumnSize];
     public Sprite[] SpritesForButtons;
     public TextMeshProUGUI[] Rows;
@@ -110,13 +109,5 @@ public class Nonogram : MonoBehaviour
             if (CurrentColumns[i] != AnswerColumns[i])
                 return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        ThreeColorUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        ThreeColorUIPanel.SetActive(false);
     }
 }

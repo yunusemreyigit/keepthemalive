@@ -1,7 +1,6 @@
 using UnityEngine;
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Puzzle
 {
-    public GameObject SendFieldGameUIPanel;
     public float speed = 3f;
     private Vector3 PlayerStartPosition;
     void Start()
@@ -22,9 +21,5 @@ public class PlayerMovement : MonoBehaviour
             ClosePanel();
         if (other.CompareTag("Obstacle"))
             transform.position = PlayerStartPosition;
-    }
-    private void ClosePanel()
-    {
-        SendFieldGameUIPanel.SetActive(false);
     }
 }

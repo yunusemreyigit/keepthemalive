@@ -1,7 +1,6 @@
 using UnityEngine;
-public class WateringGamePot : MonoBehaviour
+public class WateringGamePot : Puzzle
 {
-    public GameObject WateringPlantGameUIPanel;
     public WateringPlants_Plant[] plants;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
@@ -59,13 +58,5 @@ public class WateringGamePot : MonoBehaviour
         foreach (WateringPlants_Plant plant in plants)
             if (plant.NeedWater()) return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        WateringPlantGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        WateringPlantGameUIPanel.SetActive(false);
     }
 }

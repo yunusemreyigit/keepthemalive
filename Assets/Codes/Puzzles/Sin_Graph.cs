@@ -4,7 +4,7 @@ public class Sin_Graph : MonoBehaviour
 {
     public int resolution = 100;
     public float amplitude = 1f; // Range -> [-1.5f , 1.5f]
-    public float frequency = 1f; // Range -> [0f , 10f]
+    public float frequency = 1f; // Range -> [1f , 10f]
     public float length = 6.3f;
     public Vector2 offset = new Vector2(-3.15f, 1.2f);
     public Color color = Color.black;
@@ -17,7 +17,7 @@ public class Sin_Graph : MonoBehaviour
         lineRenderer.endWidth = 0.05f;
         lineRenderer.material.color = color;
         amplitude = Random.Range(0.5f, 1.5f);
-        frequency = Random.Range(0f, 10f);
+        frequency = Random.Range(1f, 10f);
     }
     void Update()
     {

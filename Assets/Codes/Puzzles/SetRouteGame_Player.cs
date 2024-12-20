@@ -1,7 +1,6 @@
 using UnityEngine;
-public class SetRouteGame_Player : MonoBehaviour
+public class SetRouteGame_Player : Puzzle
 {
-    public GameObject SetRouteGameUIPanel;
     public Vector2 initialVelocity;
     private Vector3 PlayerStartPosition;
     private Rigidbody2D rb;
@@ -51,9 +50,5 @@ public class SetRouteGame_Player : MonoBehaviour
             rb.velocity = Vector2.zero;
             isMoving = false;
         }
-    }
-    private void ClosePanel()
-    {
-        SetRouteGameUIPanel.SetActive(false);
     }
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class ThreeColor : MonoBehaviour
+public class ThreeColor : Puzzle
 {
-    public GameObject ThreeColorUIPanel;
     public Button[] Buttons;
     public ThreeColor_Lamp[] Lamps;
     public float timer = 0f;
@@ -46,12 +45,4 @@ public class ThreeColor : MonoBehaviour
             if (!lamp.isGreen) return false;
         return true;
     }
-    public void OpenPanel()
-    {
-        ThreeColorUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        ThreeColorUIPanel.SetActive(false);
-    }
-}
+} 
