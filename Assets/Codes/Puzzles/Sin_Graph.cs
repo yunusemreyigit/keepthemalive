@@ -8,7 +8,7 @@ public class Sin_Graph : MonoBehaviour
     public float length = 6.3f;
     public Vector2 offset = new Vector2(-3.15f, 1.2f);
     public Color color = Color.black;
-    private float zOffset = -3f;
+    private float zOffset = -6f;
     private LineRenderer lineRenderer;
     void Start()
     {
