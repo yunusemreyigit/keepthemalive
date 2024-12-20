@@ -27,14 +27,14 @@ public class OxygenGame_Pointer : MonoBehaviour
     }
     public void Flap()
     {
-        rb.velocity = new Vector2(rb.velocity.x, force);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, force);
     }
     void OnTriggerStay2D(Collider2D other)
     {
         isInTheCollider = true;
         timer += Time.deltaTime;
         if (timer > 3f) {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             rb.gravityScale = 0f;
             rb.isKinematic = true;
             goal.isDone = isDone = true;
