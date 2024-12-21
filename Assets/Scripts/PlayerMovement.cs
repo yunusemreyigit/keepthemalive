@@ -5,19 +5,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed;
-    private float x;
-    private Rigidbody2D rigidbody;
-    void Start() 
+    public float speed = 1f; 
+    private float move; 
+    private Rigidbody2D rb; 
+
+    void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
+        move = Input.GetAxis("Horizontal"); 
 
-        transform.position += (Vector3)new Vector2(x * speed * Time.deltaTime, 0);
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }
     
 }
