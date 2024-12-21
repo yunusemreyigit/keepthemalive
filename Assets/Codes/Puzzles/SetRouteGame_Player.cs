@@ -12,11 +12,11 @@ public class SetRouteGame_Player : MonoBehaviour
     {
         PlayerStartPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = initialVelocity;
+        rb.linearVelocity = initialVelocity;
     }
     void FixedUpdate()
     {
-        if (!isMoving || rb.velocity.magnitude <= 0.01f) return;
+        if (!isMoving || rb.linearVelocity.magnitude <= 0.01f) return;
         SetRouteGame_Obstacle[] gravitySources = FindObjectsOfType<SetRouteGame_Obstacle>();
         Vector2 totalForce = Vector2.zero;
 
@@ -37,7 +37,7 @@ public class SetRouteGame_Player : MonoBehaviour
             Vector2 launchEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 launchDirection = (launchStart - launchEnd).normalized;
             float launchSpeed = (launchStart - launchEnd).magnitude;
-            rb.velocity = launchDirection.normalized * launchSpeed * 3f; // Doğrudan Rigidbody'ye hız uygula
+            rb.linearVelocity = launchDirection.normalized * launchSpeed * 3f; // Doğrudan Rigidbody'ye hız uygula
             isDragging = false;
             isMoving = true;
         }
@@ -48,7 +48,7 @@ public class SetRouteGame_Player : MonoBehaviour
             ClosePanel();
         if (other.CompareTag("Obstacle")) {
             transform.position = PlayerStartPosition;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             isMoving = false;
         }
     }
