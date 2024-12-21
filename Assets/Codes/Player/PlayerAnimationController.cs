@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerAnimationController : MonoBehaviour
 {
     private Animator animator;
     private MovementMechanism movement;
+    private Battery battery;
     private float scale = 0.4f;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
     void Start()
     {
+        battery = GetComponent<Battery>();
         movement = GetComponent<MovementMechanism>();
         animator.SetBool("walking", false);
     }
@@ -27,5 +30,11 @@ public class Player : MonoBehaviour
         {
             animator.SetBool("walking", false);
         }
+        BatteryDeadAnim(battery.isBatteryDead);
+
+    }
+    private void BatteryDeadAnim(bool value)
+    {
+        animator.SetBool("battery_dead", value);
     }
 }
