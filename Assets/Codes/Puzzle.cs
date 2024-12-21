@@ -2,12 +2,15 @@ using UnityEngine;
 public class Puzzle : MonoBehaviour
 {
     public GameObject UIPanel;
+    public Mission mission;
     public void ClosePanel()
     {
+        if (mission != null) 
+            mission.isMissionCompleted = true;
         UIPanel.SetActive(false);
     }
     public void Exit()
     {
-        UIPanel.transform.position = new Vector3(UIPanel.transform.position.x, UIPanel.transform.position.y, 10);
+        UIPanel.SetActive(false);
     }
 }

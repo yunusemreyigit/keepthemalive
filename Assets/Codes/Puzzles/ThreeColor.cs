@@ -9,10 +9,22 @@ public class ThreeColor : Puzzle
     void Start()
     {
         while (IsGameOver()) mixArray();
+    }
+    void OnEnable()
+    {
+        GameOver = false;
+        timer = 0f;
         for (int i = 0; i < Buttons.Length; i++)
         {
             int buttonIndex = i;
             Buttons[i].onClick.AddListener(() => OnButtonClick(buttonIndex));
+        }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < Buttons.Length; i++)
+        {
+            Buttons[i].onClick.RemoveAllListeners();
         }
     }
     void Update()
@@ -20,7 +32,7 @@ public class ThreeColor : Puzzle
         if (GameOver)
         {
             timer += Time.deltaTime;
-            if (timer >= 1.5f) ClosePanel();
+            if (timer >= 1f) ClosePanel();
         }
     }
     private void OnButtonClick(int index)
@@ -45,4 +57,4 @@ public class ThreeColor : Puzzle
             if (!lamp.isGreen) return false;
         return true;
     }
-} 
+}

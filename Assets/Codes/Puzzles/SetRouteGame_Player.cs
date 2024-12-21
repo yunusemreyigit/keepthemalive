@@ -13,6 +13,13 @@ public class SetRouteGame_Player : Puzzle
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = initialVelocity;
     }
+    void OnDisable()
+    {
+        transform.position = PlayerStartPosition;
+        rb.velocity = initialVelocity;
+        isMoving = false;
+        isDragging = false;
+    }
     void FixedUpdate()
     {
         if (!isMoving || rb.velocity.magnitude <= 0.01f) return;

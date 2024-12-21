@@ -33,6 +33,7 @@ public class MissionTrigger : MonoBehaviour
         else
         {
             mission.ActivateMission(true);
+            mission.isMissionCompleted = false;
             timer -= frequency;
         }
     }

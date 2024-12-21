@@ -44,7 +44,7 @@ public class Nonogram : Puzzle
         if (GameOver)
         {
             timer += Time.deltaTime;
-            if (timer >= 1.5f) ClosePanel();
+            if (timer >= 1f) ClosePanel();
         }
     }
     private void SetStrings(string[] rows, string[] columns)

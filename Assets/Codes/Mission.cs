@@ -11,6 +11,7 @@ public class Mission : MonoBehaviour
     public float time = 0f;
     public float timeLimit = 120f;
     public bool isPressable = true;
+    public bool isMissionCompleted = false;
     void Start()
     {
         GetComponent<Button>().onClick.AddListener(() => OnButtonClick());
@@ -19,33 +20,27 @@ public class Mission : MonoBehaviour
     void Update()
     {
         if (isMissionActive) time += Time.deltaTime;
-        if (ClonePanel != null && !ClonePanel.activeSelf)
+        if (isMissionCompleted)
         {
             Destroy(ClonePanel);
             ClonePanel = null;
-        }
-        if (ClonePanel != null && ClonePanel.activeSelf)
-        {
             ActivateMission(false);
         }
     }
     private void OnButtonClick()
     {
         if (!isMissionActive || !isPressable) return;
-        if (ClonePanel == null)
-        {
-            ClonePanel = Instantiate(puzzle.UIPanel, PanelParent);
-            ClonePanel.transform.position = new Vector3(ClonePanel.transform.position.x, ClonePanel.transform.position.y, -4);
-            ClonePanel.SetActive(true);
-        }
         else if (!ClonePanel.activeSelf)
-        {
             ClonePanel.SetActive(true);
-        }
     }
     public void ActivateMission(bool b)
     {
         imageRenderer.sprite = sprites[(isMissionActive = b) ? 1 : 0];
+        if (b)
+        {
+            ClonePanel = Instantiate(puzzle.UIPanel, PanelParent);
+            ClonePanel.transform.position = new Vector3(ClonePanel.transform.position.x, ClonePanel.transform.position.y, -4);
+        }
     }
     public bool isCloneActive()
     {

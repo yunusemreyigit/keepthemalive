@@ -24,7 +24,7 @@ public class Wifi : Puzzle
     {
         if (isAtTarget) {
             timeAtTarget += Time.deltaTime;
-            if (timeAtTarget >= 2f) ClosePanel();
+            if (timeAtTarget >= 1f) ClosePanel();
         }
         else timeAtTarget = 0; 
     }
