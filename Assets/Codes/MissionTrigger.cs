@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MissionTrigger : MonoBehaviour
 {
     public float frequency = 10f;
     public Mission[] missions;
+    public TextMeshProUGUI activeMissionsText;
     private float timer = 10f;
     void Update()
     {
@@ -12,6 +14,7 @@ public class MissionTrigger : MonoBehaviour
             ActivateRandomMission();
 
         bool anyCloneActive = false;
+        string activeMissions = "Active Missions : ";
 
         foreach (Mission m in missions)
         {
@@ -20,9 +23,15 @@ public class MissionTrigger : MonoBehaviour
 
             if (m.isCloneActive())
                 anyCloneActive = true;
+            
+            if (m.isMissionActive)
+                activeMissions += $"\n{m.name} : {(int)(m.timeLimit - m.time)}";
         }
 
         SetPressable(!anyCloneActive);
+
+        if (activeMissionsText != null)
+            activeMissionsText.text = activeMissions;
     }
 
     private void ActivateRandomMission()

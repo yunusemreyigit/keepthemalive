@@ -40,6 +40,7 @@ public class Mission : MonoBehaviour
         {
             ClonePanel = Instantiate(puzzle.UIPanel, PanelParent);
             ClonePanel.transform.position = new Vector3(ClonePanel.transform.position.x, ClonePanel.transform.position.y, -4);
+            time = 0f;
         }
     }
     public bool isCloneActive()
