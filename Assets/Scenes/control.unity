@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  speed: 1
+  speed: 5
   move: 0
 --- !u!114 &1480423430
 MonoBehaviour:
