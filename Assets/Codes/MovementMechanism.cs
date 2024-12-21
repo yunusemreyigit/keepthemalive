@@ -13,6 +13,6 @@ public class MovementMechanism : MonoBehaviour
     {
         move = Input.GetAxis("Horizontal");
         
-        rb.velocity = new Vector2(move * speed, rb.velocity.y);
+        rb.linearVelocity = new Vector2(move * speed, rb.linearVelocity.y);
     }
 }
