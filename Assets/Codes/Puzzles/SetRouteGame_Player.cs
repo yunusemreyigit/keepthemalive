@@ -16,7 +16,7 @@ public class SetRouteGame_Player : Puzzle
     void OnDisable()
     {
         transform.position = PlayerStartPosition;
-        rb.velocity = initialVelocity;
+        rb.linearVelocity = initialVelocity;
         isMoving = false;
         isDragging = false;
     }
