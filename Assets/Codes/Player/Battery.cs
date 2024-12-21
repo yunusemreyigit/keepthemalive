@@ -6,33 +6,39 @@ public class Battery : MonoBehaviour
     [SerializeField] private float maxBatteryLevel = 0;
     [SerializeField] private float batteryLevel = 0;
     [Range(1, 20)]
-    [SerializeField] private float batteryDrainRate = 1;
+    [SerializeField] private float batteryDrainMultiplier = 1;
 
     [Header("Interface")]
     public Transform battery;
     [SerializeField] private SpriteRenderer batterySprite;
     [SerializeField] private Color batteryColor;
 
+    public bool isBatteryDead;
     private MovementMechanism movementMechanism;
     void Start()
     {
         batterySprite.color = batteryColor;
-        maxBatteryLevel = 100;
         movementMechanism = GetComponent<MovementMechanism>();
         batteryLevel = maxBatteryLevel;
     }
 
     void Update()
     {
-        batteryLevel -= Time.deltaTime * batteryDrainRate;
+        batteryLevel -= Time.deltaTime * batteryDrainMultiplier;
         batteryLevel = Mathf.Clamp(batteryLevel, 0, maxBatteryLevel);
         battery.localScale = new Vector3(1, batteryLevel / maxBatteryLevel, 1);
+        BatteryDead();
+    }
+    void BatteryDead()
+    {
         if (batteryLevel <= 0)
         {
+            isBatteryDead = true;
             movementMechanism.canMove = false;
         }
         else
         {
+            isBatteryDead = false;
             movementMechanism.canMove = true;
         }
     }
