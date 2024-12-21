@@ -1,7 +1,6 @@
 using UnityEngine;
-public class DustOff_Brush : MonoBehaviour
+public class DustOff_Brush : Puzzle
 {
-    public GameObject WateringPlantGameUIPanel;
     public WateringPlants_Plant[] dirts;
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
@@ -65,13 +64,5 @@ public class DustOff_Brush : MonoBehaviour
         foreach (WateringPlants_Plant dirt in dirts)
             if (dirt.NeedWater()) return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        WateringPlantGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        WateringPlantGameUIPanel.SetActive(false);
     }
 }

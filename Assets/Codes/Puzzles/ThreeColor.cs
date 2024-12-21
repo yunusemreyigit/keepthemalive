@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class ThreeColor : MonoBehaviour
+public class ThreeColor : Puzzle
 {
-    public GameObject ThreeColorUIPanel;
     public Button[] Buttons;
     public ThreeColor_Lamp[] Lamps;
     public float timer = 0f;
@@ -10,10 +9,22 @@ public class ThreeColor : MonoBehaviour
     void Start()
     {
         while (IsGameOver()) mixArray();
+    }
+    void OnEnable()
+    {
+        GameOver = false;
+        timer = 0f;
         for (int i = 0; i < Buttons.Length; i++)
         {
             int buttonIndex = i;
             Buttons[i].onClick.AddListener(() => OnButtonClick(buttonIndex));
+        }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < Buttons.Length; i++)
+        {
+            Buttons[i].onClick.RemoveAllListeners();
         }
     }
     void Update()
@@ -21,7 +32,7 @@ public class ThreeColor : MonoBehaviour
         if (GameOver)
         {
             timer += Time.deltaTime;
-            if (timer >= 1.5f) ClosePanel();
+            if (timer >= 1f) ClosePanel();
         }
     }
     private void OnButtonClick(int index)
@@ -45,13 +56,5 @@ public class ThreeColor : MonoBehaviour
         foreach (ThreeColor_Lamp lamp in Lamps)
             if (!lamp.isGreen) return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        ThreeColorUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        ThreeColorUIPanel.SetActive(false);
     }
 }

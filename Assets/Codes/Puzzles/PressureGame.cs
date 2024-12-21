@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class PressureGame : MonoBehaviour
+public class PressureGame : Puzzle
 {
-    public GameObject PressureGameUIPanel;
     public GameObject[] Goals;
     public PressureGame_Pointer[] pointers;
     public Button[] buttons;
@@ -35,13 +34,5 @@ public class PressureGame : MonoBehaviour
             pointers[index].isDone = true;
         else for (int i = 0; i < pointers.Length; i++)
             pointers[i].isDone = false;
-    }
-    public void OpenPanel()
-    {
-        PressureGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        PressureGameUIPanel.SetActive(false);
     }
 }

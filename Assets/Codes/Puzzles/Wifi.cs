@@ -1,7 +1,6 @@
 using UnityEngine;
-public class Wifi : MonoBehaviour
+public class Wifi : Puzzle
 {
-    public GameObject WifiGameUIPanel;
     private SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
     private Rigidbody2D _rigidbody2D;
@@ -25,7 +24,7 @@ public class Wifi : MonoBehaviour
     {
         if (isAtTarget) {
             timeAtTarget += Time.deltaTime;
-            if (timeAtTarget >= 2f) ClosePanel();
+            if (timeAtTarget >= 1f) ClosePanel();
         }
         else timeAtTarget = 0; 
     }
@@ -89,13 +88,5 @@ public class Wifi : MonoBehaviour
             spriteRenderer.sprite = sprites[4];
             isAtTarget = true;
         }
-    }
-    public void OpenPanel()
-    {
-        WifiGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        WifiGameUIPanel.SetActive(false);
     }
 }

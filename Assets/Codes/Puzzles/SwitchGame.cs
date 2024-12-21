@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwitchGame : MonoBehaviour
+public class SwitchGame : Puzzle
 {
-    public GameObject SwitchGameUIPanel;
     public Sprite[] sprites;
     public Button[] Buttons;
     public const int size = 6;
@@ -31,13 +30,5 @@ public class SwitchGame : MonoBehaviour
             if (CurrentArray[i] != AnswerArray[i])
                 return false;
         return true;
-    }
-    public void OpenPanel()
-    {
-        SwitchGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        SwitchGameUIPanel.SetActive(false);
     }
 }

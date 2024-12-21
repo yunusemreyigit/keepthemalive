@@ -6,10 +6,10 @@ public class ThreeColor_Lamp : MonoBehaviour
     public Sprite[] sprites; // Green-Red-Yellow
     public int spriteIndex = 0;
     public bool isGreen = true;
-    public void Start()
+    void OnEnable()
     {
         imageRenderer = GetComponent<Image>();
-        imageRenderer.sprite = sprites[0];
+        imageRenderer.sprite = sprites[spriteIndex];
     }
     public void ChangeColor()
     {

@@ -1,7 +1,6 @@
 using UnityEngine;
-public class SetRouteGame_Player : MonoBehaviour
+public class SetRouteGame_Player : Puzzle
 {
-    public GameObject SetRouteGameUIPanel;
     public Vector2 initialVelocity;
     private Vector3 PlayerStartPosition;
     private Rigidbody2D rb;
@@ -13,6 +12,13 @@ public class SetRouteGame_Player : MonoBehaviour
         PlayerStartPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = initialVelocity;
+    }
+    void OnDisable()
+    {
+        transform.position = PlayerStartPosition;
+        rb.velocity = initialVelocity;
+        isMoving = false;
+        isDragging = false;
     }
     void FixedUpdate()
     {
@@ -51,9 +57,5 @@ public class SetRouteGame_Player : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             isMoving = false;
         }
-    }
-    private void ClosePanel()
-    {
-        SetRouteGameUIPanel.SetActive(false);
     }
 }

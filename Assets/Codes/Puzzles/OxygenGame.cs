@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class OxygenGame : MonoBehaviour
+public class OxygenGame : Puzzle
 {
-    public GameObject OxygenGameUIPanel;
     public OxygenGame_Pointer[] pointers;
     public Button[] buttons;
     void Start()
@@ -27,13 +26,5 @@ public class OxygenGame : MonoBehaviour
     {
         if (!pointers[index].isDone)
             pointers[index].Flap();
-    }
-    public void OpenPanel()
-    {
-        OxygenGameUIPanel.SetActive(true);
-    }
-    private void ClosePanel()
-    {
-        OxygenGameUIPanel.SetActive(false);
     }
 }

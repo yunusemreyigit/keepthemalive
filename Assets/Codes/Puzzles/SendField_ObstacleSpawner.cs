@@ -16,9 +16,9 @@ public class SendField_ObstacleSpawner : MonoBehaviour
     {
         for (int i = 0; i < obstacleCount; i++)
         {
-            Vector2 randomPosition = new Vector2(
+            Vector3 randomPosition = new Vector3(
                 Random.Range(spawnAreaMin.x, spawnAreaMax.x),
-                Random.Range(spawnAreaMin.y, spawnAreaMax.x)
+                Random.Range(spawnAreaMin.y, spawnAreaMax.x), -5
             );
 
             GameObject newObstacle = Instantiate(obstaclePrefab, randomPosition, Quaternion.identity);
