@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerAnimationController : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
     private MovementMechanism movement;
     private Battery battery;
     private float scale = 0.4f;
+    private PhotonView photonView;
 
     private void Awake()
     {
@@ -13,6 +15,7 @@ public class PlayerAnimationController : MonoBehaviour
     }
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
         battery = GetComponent<Battery>();
         movement = GetComponent<MovementMechanism>();
         animator.SetBool("walking", false);
@@ -20,16 +23,20 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Update()
     {
-        if (movement.move != 0)
+        if (photonView.IsMine)
         {
-            animator.SetBool("walking", true);
-            if (movement.move > 0) transform.localScale = new Vector3(scale, scale, scale);
-            if (movement.move < 0) transform.localScale = new Vector3(-scale, scale, scale);
+            if (movement.move != 0)
+            {
+                animator.SetBool("walking", true);
+                if (movement.move > 0) transform.localScale = new Vector3(scale, scale, scale);
+                if (movement.move < 0) transform.localScale = new Vector3(-scale, scale, scale);
+            }
+            else
+            {
+                animator.SetBool("walking", false);
+            }
         }
-        else
-        {
-            animator.SetBool("walking", false);
-        }
+
         BatteryDeadAnim(battery.isBatteryDead);
 
     }
