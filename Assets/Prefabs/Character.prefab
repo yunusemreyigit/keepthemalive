@@ -553,9 +553,11 @@ GameObject:
   - component: {fileID: 4945534151788582004}
   - component: {fileID: 3592971717182274073}
   - component: {fileID: 6832603429274218308}
+  - component: {fileID: 6586233896208734443}
+  - component: {fileID: 285449577182198685}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -733,6 +735,33 @@ MonoBehaviour:
   batterySprite: {fileID: 6808884931695234067}
   batteryColor: {r: 0.6509434, g: 0.16887684, b: 0.58864546, a: 1}
   isBatteryDead: 0
+--- !u!114 &6586233896208734443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563407445182772291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e2b06194884084e91cc390f9eb2569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &285449577182198685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7563407445182772291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3799bc081834c8f45b2c311d201b1f9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7990699856689064677
 GameObject:
   m_ObjectHideFlags: 0
