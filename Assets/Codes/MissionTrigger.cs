@@ -1,35 +1,29 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 public class MissionTrigger : MonoBehaviour
 {
     public float frequency = 10f;
     public Mission[] missions;
     public TextMeshProUGUI activeMissionsText;
-    private float timer = 10f;
+    public float timer = 10f;
     void Update()
     {
+        Puzzle.isAnyPanelActive = IsAnyPanelActive();
+
         timer += Time.deltaTime;
         if (timer > frequency)
             ActivateRandomMission();
 
-        bool anyCloneActive = false;
         string activeMissions = "Active Missions : ";
 
         foreach (Mission m in missions)
         {
             if (m.isMissionActive && m.time > m.timeLimit)
                 Debug.Log($"Time limit is exceeded for subject : {m.name}");
-
-            if (m.isCloneActive())
-                anyCloneActive = true;
             
             if (m.isMissionActive)
                 activeMissions += $"\n{m.name} : {(int)(m.timeLimit - m.time)}";
         }
-
-        SetPressable(!anyCloneActive);
-
         if (activeMissionsText != null)
             activeMissionsText.text = activeMissions;
     }
@@ -41,17 +35,17 @@ public class MissionTrigger : MonoBehaviour
             ActivateRandomMission();
         else
         {
+            Debug.Log($"{mission.name} is activated");
             mission.ActivateMission(true);
             mission.isMissionCompleted = false;
             timer -= frequency;
         }
     }
-
-    private void SetPressable(bool isPressable)
+    private bool IsAnyPanelActive()
     {
         foreach (Mission m in missions)
-        {
-            m.isPressable = isPressable;
-        }
+            if (m.puzzle.UIPanel.activeSelf)
+                return true;
+        return false;
     }
 }
