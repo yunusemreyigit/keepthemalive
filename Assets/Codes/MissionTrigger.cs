@@ -23,7 +23,7 @@ public class MissionTrigger : MonoBehaviour
 
             if (m.isCloneActive())
                 anyCloneActive = true;
-            
+
             if (m.isMissionActive)
                 activeMissions += $"\n{m.name} : {(int)(m.timeLimit - m.time)}";
         }

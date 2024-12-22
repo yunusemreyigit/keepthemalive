@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 1044588852}
   - component: {fileID: 1044588853}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Oxgyen Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 1774229707}
   - component: {fileID: 1774229708}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: Printer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 2132223826}
   - component: {fileID: 2132223827}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: 'Pressure '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
