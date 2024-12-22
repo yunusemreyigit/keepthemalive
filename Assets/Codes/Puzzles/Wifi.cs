@@ -12,11 +12,12 @@ public class Wifi : Puzzle
     private Vector2 destination;
     public float timeAtTarget = 0f;
     private bool isAtTarget = false;
-    private void Start()
+    void OnEnable()
     {
         _mainCamera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        CheckIfDestinationReached();
         currentPosition = transform.position;
         destination = GenerateRandomDestination();
     }

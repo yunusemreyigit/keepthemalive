@@ -7,10 +7,21 @@ public class OxygenGame_Goal : MonoBehaviour
     private Vector3 pointB;
     private bool isMovingToB = true;
     public bool isDone = false;
+    private Vector3 StartPosition;
     void Start()
+    {
+        StartPosition = transform.position;
+    }
+    void OnEnable()
     {
         pointA = new Vector3(transform.position.x, transform.position.y - Random.Range(range/2,range), transform.position.z);
         pointB = new Vector3(transform.position.x, transform.position.y + Random.Range(range/2,range), transform.position.z);
+        isMovingToB = true;
+        isDone = false;
+    }
+    void OnDisable()
+    {
+        transform.position = StartPosition;
     }
     void Update()
     {

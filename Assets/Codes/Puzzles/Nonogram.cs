@@ -16,12 +16,11 @@ public class Nonogram : Puzzle
     private string[] CurrentColumns = new string[ColumnSize];
     public float timer = 0f;
     private bool GameOver = false;
-
-    void Start()
+    void OnEnable()
     {
         for (int i = 0; i < RowSize; i++)
             for (int j = 0; j < ColumnSize; j++)
-                matrix[i, j] = UnityEngine.Random.Range(0, 2) == 1;
+                matrix[i, j] = Random.Range(0, 2) == 1;
 
         SetStrings(AnswerRows, AnswerColumns);
 
@@ -30,13 +29,24 @@ public class Nonogram : Puzzle
 
         for (int i = 0; i < ColumnSize; i++)
             Columns[i].SetText(AnswerColumns[i]);
-
+        
         for (int i = 0; i < RowSize; i++)
             for (int j = 0; j < ColumnSize; j++)
             {
                 matrix[i,j] = false;
                 int x = i, y = j;
+                Buttons[x*ColumnSize+y].image.sprite = SpritesForButtons[0];
                 Buttons[x*ColumnSize+y].onClick.AddListener(() => OnButtonClick(x,y));
+            }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < RowSize; i++)
+            for (int j = 0; j < ColumnSize; j++)
+            {
+                matrix[i,j] = false;
+                int x = i, y = j;
+                Buttons[x*ColumnSize+y].onClick.RemoveAllListeners();
             }
     }
     void Update()

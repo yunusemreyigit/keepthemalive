@@ -5,6 +5,10 @@ public class SinGame : Puzzle
     public Sin_Graph Graph;
     public RotatingButton[] buttons;
     private float timer = 0f;
+    void OnDisable()
+    {
+        timer = 0f;
+    }
     void Update()
     {
         if (Mathf.Abs(AnswerGraph.amplitude - Graph.amplitude) < 0.05f)

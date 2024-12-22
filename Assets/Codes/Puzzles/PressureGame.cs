@@ -10,12 +10,21 @@ public class PressureGame : Puzzle
         foreach (GameObject g in Goals)
             g.transform.position = new Vector3(g.transform.position.x, Random.Range(-1f, 1f), g.transform.position.z);
     }
-    void Start()
+    void OnEnable()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
             int buttonIndex = i;
             buttons[i].onClick.AddListener(() => OnButtonClick(buttonIndex));
+        }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int buttonIndex = i;
+            buttons[i].onClick.RemoveAllListeners();
+            Awake();
         }
     }
     void Update()

@@ -8,10 +8,22 @@ public class PressureGame_Pointer : MonoBehaviour
     private bool isMovingToB = true;
     public bool isOnTheGoal = false;
     public bool isDone = false;
+    private Vector3 StartPosition;
     void Start()
     {
+        StartPosition = transform.position;
+    }
+    void OnEnable()
+    {
+        isMovingToB = true;
+        isOnTheGoal = false;
+        isDone = false;
         pointA = new Vector3(transform.position.x, transform.position.y - rangeY, transform.position.z);
         pointB = new Vector3(transform.position.x, transform.position.y + rangeY, transform.position.z);
+    }
+    void OnDisable()
+    {
+        transform.position = StartPosition;
     }
     void Update()
     {

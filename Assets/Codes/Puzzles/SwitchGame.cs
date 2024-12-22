@@ -8,13 +8,22 @@ public class SwitchGame : Puzzle
     public const int size = 6;
     public bool[] AnswerArray = new bool[size];
     private bool[] CurrentArray = new bool[size];
-    void Start()
+    void OnEnable()
     {
         for (int i = 0; i < Buttons.Length; i++)
         {
             int x = i;
             AnswerArray[x] = Random.Range(0,2) == 1 ? true : false;
             CurrentArray[x] = false;
+            Buttons[x].onClick.AddListener(() => OnButtonClick(x));
+        }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < Buttons.Length; i++)
+        {
+            int x = i;
+            Buttons[x].image.sprite = sprites[0];
             Buttons[x].onClick.AddListener(() => OnButtonClick(x));
         }
     }

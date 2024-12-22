@@ -4,12 +4,20 @@ public class OxygenGame : Puzzle
 {
     public OxygenGame_Pointer[] pointers;
     public Button[] buttons;
-    void Start()
+    void OnEnable()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = i;
             buttons[i].onClick.AddListener(() => OnButtonClick(index));
+        }
+    }
+    void OnDisable()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int index = i;
+            buttons[i].onClick.RemoveAllListeners();
         }
     }
     void Update()

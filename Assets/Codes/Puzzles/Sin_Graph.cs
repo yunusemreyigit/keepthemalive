@@ -10,7 +10,7 @@ public class Sin_Graph : MonoBehaviour
     public Color color = Color.black;
     private float zOffset = -6f;
     private LineRenderer lineRenderer;
-    void Start()
+    void OnEnable()
     {
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.05f;

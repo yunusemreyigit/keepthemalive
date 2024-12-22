@@ -4,16 +4,26 @@ public class SendField_ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
     public int obstacleCount = 20;
-    public Vector2 spawnAreaMin;
-    public Vector2 spawnAreaMax;
     public Transform parentTransform;
-    public float obstacleSize = 0.3f;
-    void Start()
+    private GameObject ParentOfClones;
+    private float obstacleSize = 0.3f;
+    void OnEnable()
     {
+        ParentOfClones = new GameObject();
+        ParentOfClones.transform.SetParent(parentTransform);
+        ParentOfClones.transform.localScale = new Vector3(1f, 1f, 1f);
         StartCoroutine(SpawnObstacles());
+    }
+    void OnDisable()
+    {
+        Destroy(ParentOfClones);
+        ParentOfClones = null;
     }
     IEnumerator SpawnObstacles()
     {
+        Vector2 spawnAreaMin = new Vector2(-2f, -2f);
+        Vector2 spawnAreaMax = new Vector2(2f, 2f);
+        
         for (int i = 0; i < obstacleCount; i++)
         {
             Vector3 randomPosition = new Vector3(
@@ -22,7 +32,7 @@ public class SendField_ObstacleSpawner : MonoBehaviour
             );
 
             GameObject newObstacle = Instantiate(obstaclePrefab, randomPosition, Quaternion.identity);
-            newObstacle.transform.SetParent(parentTransform);
+            newObstacle.transform.SetParent(ParentOfClones.transform);
             newObstacle.transform.localScale = new Vector3(obstacleSize, obstacleSize, 1f);
             newObstacle.SetActive(true);
 

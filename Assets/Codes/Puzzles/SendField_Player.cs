@@ -7,6 +7,10 @@ public class PlayerMovement : Puzzle
     {
         PlayerStartPosition = transform.position;
     }
+    void OnDisable()
+    {
+        transform.position = PlayerStartPosition;
+    }
     void Update()
     {
         float moveX = Input.GetAxis("Horizontal");

@@ -11,6 +11,10 @@ public class CollectGarbage_Garbage : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    void OnEnable()
+    {
+        timer = 0f;
+    }
     void Update()
     {
         if (timer > 0.5f) ThisObject.SetActive(false);

@@ -9,6 +9,10 @@ public class RotatingButton : MonoBehaviour
     void Start()
     {
         buttonRectTransform = GetComponent<RectTransform>();
+    }
+    void OnEnable()
+    {
+        isDragging = false;
         value = Random.Range(0f,1f);
     }
     void Update()

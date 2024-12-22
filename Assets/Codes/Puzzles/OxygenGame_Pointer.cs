@@ -7,9 +7,23 @@ public class OxygenGame_Pointer : MonoBehaviour
     public float timer = 0f;
     public bool isDone = false;
     public bool isInTheCollider = false;
+    private Vector3 StartPosition;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartPosition = transform.position;
+    }
+    void OnEnable()
+    {
+        timer = 0f;
+        isDone = false;
+        isInTheCollider = false;
+    }
+    void OnDisable()
+    {
+        transform.position = StartPosition;
+        rb.gravityScale = 1f;
+        rb.isKinematic = false;
     }
     void Update()
     {

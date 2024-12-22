@@ -12,15 +12,18 @@ public class DustOff_Brush : Puzzle
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        InvokeRepeating(nameof(AnimateSprite), 0.1f, 0.1f);
+    }
+    void OnEnable()
+    {
         foreach (WateringPlants_Plant dirt in dirts)
         {
             float randomX = Random.Range(minBounds.x, maxBounds.x);
             float randomY = Random.Range(minBounds.y, maxBounds.y - 0.3f);
             dirt.transform.position = new Vector3(randomX, randomY, dirt.transform.position.z);
         }
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        InvokeRepeating(nameof(AnimateSprite), 0.1f, 0.1f);
     }
     void Update()
     {

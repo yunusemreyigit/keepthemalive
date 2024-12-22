@@ -9,6 +9,11 @@ public class WateringPlants_Plant : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    void OnEnable()
+    {
+        HP = 0f;
+        spriteIndex = 0;
+    }
     void Update()
     {
         if (NeedWater() && HP >= spriteIndex)

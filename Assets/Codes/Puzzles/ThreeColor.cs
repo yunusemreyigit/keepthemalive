@@ -6,14 +6,11 @@ public class ThreeColor : Puzzle
     public ThreeColor_Lamp[] Lamps;
     public float timer = 0f;
     private bool GameOver = false;
-    void Start()
-    {
-        while (IsGameOver()) mixArray();
-    }
     void OnEnable()
     {
-        GameOver = false;
-        timer = 0f;
+        ResetGame();
+        while (IsGameOver()) mixArray();
+
         for (int i = 0; i < Buttons.Length; i++)
         {
             int buttonIndex = i;
@@ -25,6 +22,17 @@ public class ThreeColor : Puzzle
         for (int i = 0; i < Buttons.Length; i++)
         {
             Buttons[i].onClick.RemoveAllListeners();
+        }
+    }
+    private void ResetGame()
+    {
+        GameOver = false;
+        timer = 0f;
+
+        // Tüm lambaları sıfırla
+        foreach (var lamp in Lamps)
+        {
+            lamp.ResetColor(); // ThreeColor_Lamp içinde bir sıfırlama metodu
         }
     }
     void Update()

@@ -9,7 +9,7 @@ public class WateringGamePot : Puzzle
     public Vector2 minBounds;
     public Vector2 maxBounds;
     private bool isDragging;
-    private void Start()
+    void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();

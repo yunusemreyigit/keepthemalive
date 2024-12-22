@@ -4,7 +4,7 @@ public class CollectGarbage_Bin : Puzzle
     public CollectGarbage_Garbage[] Garbages;
     public Vector2 minBounds;
     public Vector2 maxBounds;
-    void Start()
+    void OnEnable()
     {
         foreach (CollectGarbage_Garbage garbage in Garbages)
         {
