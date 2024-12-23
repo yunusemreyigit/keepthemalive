@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 6a13b9edcc4c4644d9ed67c858eafd20
+  - enabled: 1
     path: Assets/Scenes/ControlRoom.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -26,8 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/machineRoom.unity
     guid: e713831fb6663d64bbf19809dd94fe82
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 6a13b9edcc4c4644d9ed67c858eafd20
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
