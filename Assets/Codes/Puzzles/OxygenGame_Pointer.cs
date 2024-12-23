@@ -23,7 +23,7 @@ public class OxygenGame_Pointer : MonoBehaviour
     {
         transform.position = StartPosition;
         rb.gravityScale = 1f;
-        rb.isKinematic = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
     void Update()
     {
@@ -34,7 +34,7 @@ public class OxygenGame_Pointer : MonoBehaviour
         if (timer > 25f)
         {
             rb.gravityScale = 1f;
-            rb.isKinematic = false;
+            rb.bodyType = RigidbodyType2D.Dynamic;
             goal.isDone = isDone = false;
             timer = 0f;
         }
@@ -45,14 +45,18 @@ public class OxygenGame_Pointer : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        isInTheCollider = true;
-        timer += Time.deltaTime;
-        if (timer > 3f) {
-            rb.linearVelocity = Vector2.zero;
-            rb.gravityScale = 0f;
-            rb.isKinematic = true;
-            goal.isDone = isDone = true;
-            timer = 0f;
+        if (other.CompareTag("Goal"))
+        {
+            isInTheCollider = true;
+            timer += Time.deltaTime;
+            if (timer > 3f) 
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.gravityScale = 0f;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                goal.isDone = isDone = true;
+                timer = 0f;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)

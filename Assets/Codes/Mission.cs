@@ -7,17 +7,12 @@ public class Mission : MonoBehaviour
     public float timeLimit = 120f;
     public bool isMissionActive = false;
     public bool isMissionCompleted = false;
-    
-    void Start()
-    {
-        GetComponent<Button>().onClick.AddListener(() => OnButtonClick());
-    }
     void Update()
     {
         if (puzzle.isCompleted) ActivateMission(false);
         if (isMissionActive) time += Time.deltaTime;
     }
-    private void OnButtonClick()
+    private void OnMouseDown()
     {
         if (!isMissionActive || Puzzle.isAnyPanelActive) return;
         puzzle.OpenPanel();

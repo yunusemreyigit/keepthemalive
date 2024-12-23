@@ -17,9 +17,9 @@ public class Wifi : Puzzle
         _mainCamera = Camera.main;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        CheckIfDestinationReached();
         currentPosition = transform.position;
         destination = GenerateRandomDestination();
+        CheckIfDestinationReached();
     }
     private void Update()
     {

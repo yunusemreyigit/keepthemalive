@@ -41,10 +41,12 @@ public class PressureGame_Pointer : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        isOnTheGoal = true;
+        if (other.CompareTag("Goal"))
+            isOnTheGoal = true;
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        isOnTheGoal = false;
+        if (other.CompareTag("Goal"))
+            isOnTheGoal = false;
     }
 }

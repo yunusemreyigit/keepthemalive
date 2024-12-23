@@ -23,6 +23,7 @@ public class MissionTrigger : MonoBehaviour
             
             if (m.isMissionActive)
                 activeMissions += $"\n{m.name} : {(int)(m.timeLimit - m.time)}";
+            else if (m.puzzle.isCompleted) m.puzzle.isCompleted = false;
         }
         if (activeMissionsText != null)
             activeMissionsText.text = activeMissions;
