@@ -1,24 +1,40 @@
+using System;
 using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScene : MonoBehaviour
+public class ChangeScene : MonoBehaviourPun
 {
     public LayerMask layerMask;
-    private void OnTriggerStay2D(Collider2D other)
+    bool isInDoor;
+    String RoomName;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isInDoor)
+        {
+            PhotonNetwork.LoadLevel(RoomName);
+        }
+
+    }
+
+    [PunRPC]
+    public void StartGame(){
+        PhotonNetwork.LoadLevel("ControlRoom");
+    }
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Door") && ((1 << other.gameObject.layer) & layerMask) != 0)
         {
-            print(other.tag);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    PhotonNetwork.LoadLevel(other.gameObject.name);
-                }
-                // SceneManager.LoadScene(other.gameObject.name);
-            }
-
+            isInDoor = true;
+            RoomName = other.gameObject.name;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Door") && ((1 << other.gameObject.layer) & layerMask) != 0)
+        {
+            isInDoor = false;
+            RoomName = "";
         }
     }
 }

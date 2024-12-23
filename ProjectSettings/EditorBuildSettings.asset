@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 64164026b36b60f4b8c3aaf99620c6fd
   - enabled: 1
+    path: Assets/Scenes/TestLobby.unity
+    guid: 693511df08b3e434e839d703dc27b67c
+  - enabled: 1
     path: Assets/Scenes/deepsleep.unity
     guid: ea20351012c5d1a459174ad2a64eee86
   - enabled: 1
