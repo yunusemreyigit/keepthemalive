@@ -18,7 +18,8 @@ public class ChangeScene : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void StartGame(){
+    public void StartGame()
+    {
         PhotonNetwork.LoadLevel("ControlRoom");
     }
     void OnTriggerEnter2D(Collider2D other)

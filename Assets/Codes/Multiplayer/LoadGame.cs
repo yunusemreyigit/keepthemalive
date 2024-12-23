@@ -11,8 +11,7 @@ public class LoadGame : MonoBehaviourPun
             if (Input.GetKeyDown(KeyCode.F))
             {
                 photonView.RPC("StartGame", RpcTarget.All);
-                PhotonNetwork.LoadLevel("ControlRoom");
-
+                //PhotonNetwork.LoadLevel("ControlRoom");
             }
         }
     }

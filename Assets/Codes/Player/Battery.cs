@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 [RequireComponent(typeof(MovementMechanism))]
 public class Battery : MonoBehaviour
@@ -28,7 +29,17 @@ public class Battery : MonoBehaviour
         batteryLevel = Mathf.Clamp(batteryLevel, 0, maxBatteryLevel);
         battery.localScale = new Vector3(1, batteryLevel / maxBatteryLevel, 1);
         BatteryDead();
+        BatteryLoad();
     }
+
+    private void BatteryLoad()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            batteryLevel += 10;
+        }
+    }
+
     void BatteryDead()
     {
         if (batteryLevel <= 0)
