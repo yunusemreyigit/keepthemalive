@@ -11,6 +11,7 @@ public class CollectGarbage_Bin : Puzzle
             float randomX = Random.Range(minBounds.x, maxBounds.x);
             float randomY = Random.Range(minBounds.y, maxBounds.y);
             garbage.transform.position = new Vector3(randomX, randomY, garbage.transform.position.z);
+            garbage.gameObject.SetActive(true);
         }
     }
     void Update()

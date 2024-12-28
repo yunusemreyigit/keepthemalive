@@ -18,6 +18,7 @@ public class Nonogram : Puzzle
     private bool GameOver = false;
     void OnEnable()
     {
+        timer = 0f;
         for (int i = 0; i < RowSize; i++)
             for (int j = 0; j < ColumnSize; j++)
                 matrix[i, j] = Random.Range(0, 2) == 1;
@@ -48,6 +49,7 @@ public class Nonogram : Puzzle
                 int x = i, y = j;
                 Buttons[x*ColumnSize+y].onClick.RemoveAllListeners();
             }
+        GameOver = false;
     }
     void Update()
     {

@@ -1,24 +1,27 @@
 using UnityEngine;
 public class SetRouteGame_Player : Puzzle
 {
-    public Vector2 initialVelocity;
     private Vector3 PlayerStartPosition;
     private Rigidbody2D rb;
     private Vector2 launchStart;
     private bool isMoving = false;
     private bool isDragging = false;
+    private float time = 0f;
     void Start()
     {
         PlayerStartPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = initialVelocity;
+        rb.linearVelocity = Vector2.zero;
+        isMoving = false;
+        isDragging = false;
     }
     void OnDisable()
     {
         transform.position = PlayerStartPosition;
-        rb.linearVelocity = initialVelocity;
+        rb.linearVelocity = Vector2.zero;
         isMoving = false;
         isDragging = false;
+        time = 0f;
     }
     void FixedUpdate()
     {
@@ -33,6 +36,8 @@ public class SetRouteGame_Player : Puzzle
     }
     void Update()
     {
+        if (time < 1f) time += Time.deltaTime;
+        if (time < 0.2f) return;
         if (!isMoving && Input.GetMouseButtonDown(0))
         {
             launchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -43,7 +48,7 @@ public class SetRouteGame_Player : Puzzle
             Vector2 launchEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 launchDirection = (launchStart - launchEnd).normalized;
             float launchSpeed = (launchStart - launchEnd).magnitude;
-            rb.linearVelocity = launchDirection.normalized * launchSpeed * 3f; // Doğrudan Rigidbody'ye hız uygula
+            rb.linearVelocity = launchDirection.normalized * launchSpeed * 3f;
             isDragging = false;
             isMoving = true;
         }

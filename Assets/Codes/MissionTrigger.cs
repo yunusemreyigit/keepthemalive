@@ -33,7 +33,7 @@ public class MissionTrigger : MonoBehaviour
     {
         Mission mission = missions[Random.Range(0, missions.Length)];
         if (mission.isMissionActive)
-            ActivateRandomMission();
+            timer -= 2f;
         else
         {
             Debug.Log($"{mission.name} is activated");
